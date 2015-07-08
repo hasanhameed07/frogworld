@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<!--- FrogWorld frog lifecycle simulation and game  -->
+	<!--- Developed by Hasan Hameed <hasan.hameed07@gmail.com> -->
+	<meta charset="utf-8" />
+	<title>FrogWorld by Hasan Hameed</title>
+	<style> 
+	body { margin: 0; background: #333; }
+
+	/* The ribbons */
+	.corner-ribbon{
+	  width: 300px;
+	  background: #e43;
+	  position: absolute;
+	  top: 25px;
+	  left: -50px;
+	  text-align: center;
+	  line-height: 14px;
+	  padding: 7px;
+	  letter-spacing: 1px;
+	  transform: rotate(-45deg);
+	  -webkit-transform: rotate(-45deg);
+	  font-size: 11px;
+	}
+
+	.corner-ribbon a{
+	  color: #fff;
+	  text-decoration: none;
+	}
+
+	/* Custom styles */
+
+	.corner-ribbon.sticky{
+	  position: fixed;
+	}
+
+	.corner-ribbon.shadow{
+	  box-shadow: 0 0 3px rgba(0,0,0,.3);
+	}
+
+	.corner-ribbon.top-left{
+	  top: 25px;
+	  left: -105px;
+	  transform: rotate(-45deg);
+	  -webkit-transform: rotate(-45deg);
+	}
+	.corner-ribbon.green{background: #2c7;}
+	 </style>
+	<script src="src/phaser-2.0.6.min.js"></script>
+	<script src="src/Helper.js"></script>
+	<script src="src/Pond.js"></script>
+	<script src="src/Boot.js"></script>
+	<script src="src/Preloader.js"></script>
+	<script src="src/MainMenu.js"></script>
+	<script src="src/Lifebar.js"></script>
+	<script src="src/FrogFamily.js"></script>
+	<script src="src/Egg.js"></script>
+	<script src="src/Tadpole.js"></script>
+	<script src="src/Froglet.js"></script>
+	<script src="src/Frog.js"></script>
+	<script src="src/Game.js"></script>
+	<script src="src/Events.js"></script>
+</head>
+<body>
+
+	<div class="corner-ribbon top-left sticky green shadow"><a href="mailto:hasan.hameed07@gmail.com">By Hasan Hameed</a><br/>
+	<a href="#">Code on Github</a></div>
+	<script>
+	var game;
+	(function() {
+		// initialize the phaser framework
+		game = new Phaser.Game(Pond.GAME_WIDTH, Pond.GAME_HEIGHT, Phaser.AUTO, 'game');
+		// add game states
+		game.state.add('Boot', Pond.Boot);
+		game.state.add('MainMenu', Pond.MainMenu);
+		game.state.add('Preloader', Pond.Preloader);
+		game.state.add('Game', Pond.Game);
+		// start the Boot state
+		game.state.start('Boot');
+	})();
+	</script>
+</body>
+</html>
